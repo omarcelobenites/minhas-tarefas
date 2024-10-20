@@ -1,4 +1,25 @@
 import styled from 'styled-components'
+import variaveis from '../../styles/variaveis'
+import * as enuns from '../../utils/enuns/Tarefa'
+
+type TagProps = {
+  prioridade?: enuns.Prioridade
+  status?: enuns.Status
+  parametro: 'status' | 'prioridade'
+}
+
+function retornaCorDeFundo(props: TagProps): string {
+  if (props.parametro === 'prioridade') {
+    if (props.prioridade === enuns.Prioridade.URGENTE) return variaveis.vermelho
+    if (props.prioridade === enuns.Prioridade.IMPORTANTE)
+      return variaveis.amarelo2
+  } else {
+    if (props.status === enuns.Status.PENDENTE) return variaveis.amarelo
+    if (props.status === enuns.Status.CONCLUIDA) return variaveis.verde
+  }
+
+  return '#ccc'
+}
 
 export const Card = styled.div`
   background-color: #fcfcfc;
@@ -14,18 +35,15 @@ export const Titulo = styled.h3`
   margin-bottom: 16px;
 `
 
-export const Tag = styled.span`
+export const Tag = styled.span<TagProps>`
   padding: 4px 8px;
   color: #fff;
   font-weight: bold;
   font-size: 10px;
-  background-color: #e1a32a;
+  background-color: ${(props) => retornaCorDeFundo(props)};
   border-radius: 8px;
   margin-right: 16px;
   display: inline-block;
-  &.amarelo {
-    background-color: #f0c11a;
-  }
 `
 
 export const Descricao = styled.textarea`
@@ -58,11 +76,10 @@ export const Botao = styled.button`
   border-radius: 8px;
   margin-right: 8px;
   margin-bottom: 20px;
-
-  &.vermelho {
-    background-color: #c23616;
-  }
-  &.verde {
-    background-color: #44bd32;
-  }
+`
+export const BotaoSalvar = styled(Botao)`
+  background-color: ${variaveis.verde};
+`
+export const BotaoCancelarRemover = styled(Botao)`
+  background-color: ${variaveis.vermelho};
 `
