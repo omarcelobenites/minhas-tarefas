@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\Tarefa",
+    "\\src\\containers",
+    "\\src\\containers\\BarraLateral",
+    "\\src\\containers\\Formulario",
+    "\\src\\containers\\ListaDeTarefas",
+    "\\src\\pages",
+    "\\src\\pages\\Cadastro"
+  ],
+  "SelectedNode": "\\src\\containers\\Formulario\\index.tsx",
+  "PreviewInSolutionExplorer": false
+}

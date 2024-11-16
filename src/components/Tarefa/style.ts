@@ -1,21 +1,22 @@
 import styled from 'styled-components'
 import variaveis from '../../styles/variaveis'
-import * as enuns from '../../utils/enuns/Tarefa'
+import * as enums from '../../utils/enums/Tarefa'
+import { Botao } from '../../styles'
 
 type TagProps = {
-  prioridade?: enuns.Prioridade
-  status?: enuns.Status
+  prioridade?: enums.Prioridade
+  status?: enums.Status
   parametro: 'status' | 'prioridade'
 }
 
 function retornaCorDeFundo(props: TagProps): string {
   if (props.parametro === 'prioridade') {
-    if (props.prioridade === enuns.Prioridade.URGENTE) return variaveis.vermelho
-    if (props.prioridade === enuns.Prioridade.IMPORTANTE)
+    if (props.prioridade === enums.Prioridade.URGENTE) return variaveis.vermelho
+    if (props.prioridade === enums.Prioridade.IMPORTANTE)
       return variaveis.amarelo2
   } else {
-    if (props.status === enuns.Status.PENDENTE) return variaveis.amarelo
-    if (props.status === enuns.Status.CONCLUIDA) return variaveis.verde
+    if (props.status === enums.Status.PENDENTE) return variaveis.amarelo
+    if (props.status === enums.Status.CONCLUIDA) return variaveis.verde
   }
 
   return '#ccc'
@@ -27,12 +28,17 @@ export const Card = styled.div`
   padding: 16px;
   margin-bottom: 32px;
   border-radius: 16px;
+  label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
 `
 
 export const Titulo = styled.h3`
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-left: 8px;
 `
 
 export const Tag = styled.span<TagProps>`
@@ -65,21 +71,6 @@ export const BarraAcoes = styled.div`
   padding-top: 16px;
 `
 
-export const Botao = styled.button`
-  font-weight: bold;
-  font-size: 12px;
-  color: #fff;
-  padding: 8px 12px;
-  border: none;
-  cursor: pointer;
-  background-color: #2f3640;
-  border-radius: 8px;
-  margin-right: 8px;
-  margin-bottom: 20px;
-`
-export const BotaoSalvar = styled(Botao)`
-  background-color: ${variaveis.verde};
-`
 export const BotaoCancelarRemover = styled(Botao)`
   background-color: ${variaveis.vermelho};
 `

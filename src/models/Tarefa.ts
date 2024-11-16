@@ -1,4 +1,4 @@
-import type * as enuns from '../utils/enuns/Tarefa'
+import type * as enuns from '../utils/enums/Tarefa'
 
 class Tarefa {
   titulo: string
